@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { FaCopy, FaCheck } from "react-icons/fa"; // Import icons
-import { API_BASE_URL } from "../config.js";
-// Get backend URL from environment variables
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+import { API_BASE_URL, FRONTEND_BASE_URL } from "../config.js";
 
 const URLShortener = () => {
   const [originalUrl, setOriginalUrl] = useState("");
@@ -42,9 +40,11 @@ const URLShortener = () => {
   
       const data = await response.json();
     //   console.log("Backend Response:", data); // Debugging line
+
+      const shortUrl = `${FRONTEND_BASE_URL}/${data.data.short_code}`;
   
       if (response.ok) {
-        setShortUrl(data.data.short_url); // ✅ Corrected: accessing short_url from data object
+        setShortUrl(shortUrl); // ✅ Corrected: accessing short_url from data object
         setCopied(false);
       } else {
         setError(data.message || "Something went wrong!");

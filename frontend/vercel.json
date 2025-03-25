@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+      {
+        "source": "/:code",
+        "destination": "https://url-shortener-backend-vqna.onrender.com/:code"
+      }
+    ]
+  }
+  
