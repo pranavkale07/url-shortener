@@ -1,0 +1,127 @@
+/* Background: Deep Professional Purple */
+/* Ensure full height and centered layout */
+.bg-container {
+  background-color: #5D3FD3; /* Royal Purple */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  padding: 20px; /* Prevents content from sticking to screen edges */
+}
+
+/* Responsive URL Shortener Card */
+.url-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  max-width: 450px; /* Desktop max width */
+  width: 90%; /* Responsive for mobile */
+  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.url-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Title inside the card */
+.url-card h4 {
+  font-weight: 600;
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Input Field */
+.url-card input {
+  border: 1px solid #ccc;
+  padding: 12px;
+  border-radius: 8px;
+  color: #333;
+  font-size: 16px;
+  width: 100%; /* Ensures input is full-width */
+}
+
+/* Buttons */
+.url-card .btn {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px;
+  width: 100%; /* Ensures button is full-width */
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+}
+
+.url-card .btn-primary {
+  background-color: #4A28C9;
+  border: none;
+}
+
+.url-card .btn-primary:hover {
+  background-color: #3a1fa5;
+}
+
+/* Short URL Display Container */
+.short-url-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  word-break: break-word; /* Ensures URL doesn't overflow */
+}
+
+/* Short URL Styling */
+.short-url {
+  flex: 1;
+  word-break: break-word; /* Break long URLs */
+  cursor: pointer;
+  color: #4A28C9;
+  text-decoration: none;
+}
+
+/* Copy Button */
+.copy-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.copy-btn:hover {
+  transform: scale(1.1);
+}
+
+.copy-btn svg {
+  color: #4A28C9;
+}
+
+/* 📱 Mobile Specific Adjustments */
+@media (max-width: 600px) {
+  .url-card {
+      padding: 20px;
+  }
+  
+  .url-card h4 {
+      font-size: 18px;
+  }
+  
+  .short-url {
+      font-size: 14px;
+  }
+  
+  .url-card .btn {
+      font-size: 14px;
+      padding: 10px;
+  }
+}
