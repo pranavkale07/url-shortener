@@ -4,22 +4,29 @@ import urlRoutes from "./routes/url.routes.js";
 
 const app = express();
 
-// Middleware
-// app.use(cors());
-// app.use(
-//     cors({
-//       origin: "https://url-shortener-three-zeta.vercel.app", // Your Vercel frontend URL
-//       methods: ["GET", "POST"],
-//       allowedHeaders: ["Content-Type"],
-//     })
-//   );
-app.use(cors({ origin: "*" }));
+const allowedOrigins = process.env.CORS_ALLOWED_ORIGINS?.split(",") || [];
+
+app.use(
+    cors({
+      origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+          callback(null, true);
+        } else {
+          console.warn(`Blocked CORS request from: ${origin}`);
+          callback(null, false); // Reject request silently instead of throwing an error
+        }
+      },
+      credentials: true, // Enable if using cookies/authentication
+    })
+  );
 
 app.use(express.json()); // Parse JSON requests
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded requests
 
 // Routes
-// Prefix all routes with /api/v1
+app.get("/health", (req, res) => {
+    res.status(200).json({ status: "OK" });
+});
 app.use("/", urlRoutes);
 
 export { app };
